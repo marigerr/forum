@@ -1,0 +1,216 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color:#f2efed;
+    font-family:Georgia, 'Times New Roman', Times, serif
+    /*background-color:#f7d3b4;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-default {
+    /*background-color: #fae7b6;*/
+    /*background-color: #91acd9;*/
+    /*background-color: #b4c4d6;*/
+    background-color: #DAFFE9;
+    
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.hasMailIcon {
+    color: #FF1923;
+}
+
+.myText {
+    /*word-break: break-all;*/
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.jumbotron {
+    /*background-color:#fae7b6;*/
+    background-color:#C5C2E8;
+}
+
+body { 
+    overflow-y: scroll; 
+}
+
+.modal-open {
+    overflow: scroll;
+}
+
+.panel-default > .panel-heading{
+    overflow: auto;
+    background-color:#fae7b6;
+}
+
+.well {
+    /*background-color:#f7f5b4;*/
+    background-color:#DAFFE9;
+}
+
+.purple{
+  color:purple;
+}
+.blue{
+  color:#9580fc;
+}
+
+.btn-group-vertical > input{
+    margin-bottom:10px;
+    border-radius:4px !important;
+}
+
+.btn-group > input{
+    margin-right:8px;
+    border-radius:4px !important;
+}
+
+.panel-heading:hover {
+    /*background-color:#f09878;*/
+    background-color:#f2efed;
+    
+}
+
+@media (max-width: 767px) {                  
+   .content-to-hide {
+      display: none;
+   }
+}
+
+.panel-title {
+  font-size: 14px;
+}
+/*.panel-heading:active {
+    background-color:#b6ff00;
+}*/
+
+/*.well {
+    background:#ffdb57;
+}*/
+
+/*body {
+    background-color:#ffb157;
+}*/
+
+/*.navbar {
+    background-color:#ff8757;
+}*/
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+
+
+
+
+
+
+/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+ Set padding to keep content from hitting the edges 
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.hasMailIcon {
+    color: #FF1923;
+}
+
+.myText {
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.jumbotron {
+    background-color:rgb(38, 188, 181)
+}
+
+body { 
+    overflow-y: scroll; 
+}
+
+.modal-open {
+    overflow: scroll;
+}
+
+.panel-default > .panel-heading{
+    overflow: auto;
+}
+
+.purple{
+  color:purple;
+}
+.blue{
+  color:blue;
+}
+
+.btn-group-vertical > input{
+    margin-bottom:10px;
+    border-radius:4px !important;
+}
+
+.panel-heading:hover {
+    background-color:#b8faf6;
+}
+
+@media (max-width: 767px) {                  
+   .content-to-hide {
+      display: none;
+   }
+}
+.panel-heading:active {
+    background-color:#b6ff00;
+}
+
+.well {
+    background:#ffdb57;
+}
+
+body {
+    background-color:#ffb157;
+}
+
+.navbar {
+    background-color:#ff8757;
+}
+
+
+ Set width on the form input elements since they're 100% wide by default 
+input,
+select,
+textarea {
+    max-width: 280px;
+}*/

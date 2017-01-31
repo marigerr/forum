@@ -1,0 +1,88 @@
+﻿<h2>Private Mailbox</h2>
+<!--<script type="text/ng-template" id="group-template.html">
+    <div class="panel {{panelClass || 'panel-default'}}">
+        <div class="panel-heading">
+            <h4 class="panel-title" style="color:#fa39c3">
+                <span tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                    <span ng-class="{'text-muted': isDisabled}">{{heading}}</span>
+                </span>
+            </h4>
+        </div>
+        <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-body" style="text-align: right" ng-transclude></div>
+        </div>
+    </div>
+</script>-->
+
+<hr />
+<div ng-show="ForumList.length==0">You have no private mail
+</div>
+<div ng-show="ForumList.length">
+    <div class="well well-lg">
+
+        <uib-accordion close-others="oneAtATime">
+
+            <uib-accordion-group template-url="../app/mail/myAccordGroupTemplate.html" ng-repeat="forumPost in ForumList | pages: pageVals.currentPage : pageVals.itemsPerPage">
+
+                <div uib-accordion-heading>
+                    <span ng-class="forumPost.textColor" class="col-xs-6 col-sm-5">{{forumPost.Title}}</span><span class="col-xs-6 col-sm-4 text-center">From: {{forumPost.UserName}}</span><span class="col-sm-3 content-to-hide text-left">Received: {{forumPost.TimeStamp | date:'short'}}</span>
+                </div>
+
+                <div class="col-xs-12 col-sm-10">{{forumPost.PostContent}}</div>
+                <div class="col-xs-4 col-sm-2 btn-group-vertical text-right hidden-xs">
+                    <input type="button" class="btn btn-primary btn-xs" value="Reply" ng-click="showForm(forumPost)" />
+                    <input type="button" class="btn btn-success btn-xs" value="Mark as Read" ng-click="markAsRead(forumPost.PostId)" />
+                    <input type="button" class="btn btn-warning btn-xs" value="Mark as UnRead" ng-click="markAsUnRead(forumPost.PostId)" />
+                    <input type="button" class="btn btn-danger btn-xs" value="Delete" ng-click="deletePM(forumPost.PostId)" />
+                </div>
+                <div class="visible-xs">
+                    <hr />
+                    <input type="button" class="btn btn-primary btn-xs" value="Reply" ng-click="showForm(forumPost)" />
+                    <input type="button" class="btn btn-success btn-xs" value="Mark as Read" ng-click="markAsRead(forumPost.PostId)" />
+                    <input type="button" class="btn btn-warning btn-xs" value="Mark as UnRead" ng-click="markAsUnRead(forumPost.PostId)" />
+                    <input type="button" class="btn btn-danger btn-xs" value="Delete" ng-click="deletePM(forumPost.PostId)" />
+                </div>
+            </uib-accordion-group>
+    </div>
+
+         
+    <!--<table class="table">
+        <thead>
+            <tr>
+                <th><btn>Subject</btn></th>
+                <th><btn>From</btn></th>
+                <th><btn>Text</btn></th>
+                <th><btn>Date</btn></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="forumPost in ForumList | pages: pageVals.currentPage : pageVals.itemsPerPage">
+
+                <td>{{forumPost.Title}}</td>
+                <td><a ng-click="showUser(forumPost.UserName)">{{forumPost.UserName}}</a></td>
+                <td>{{forumPost.PostContent}}</td>
+                <td>{{forumPost.TimeStamp | date:'short'}}</td>
+
+                <td><button class="btn btn-primary btn-xs" value="Read" ng-click="readPost(forumPost.PostId)">Read</button></td>
+
+                <td><input type="button" class="btn btn-primary btn-xs" value="Mark as Read" ng-click="markAsRead(forumPost.PostId)" /></td>
+
+                <td><input type="button" class="btn btn-success btn-xs" value="Reply" ng-click="replyToPM(forumPost.PostId)" /></td>
+
+                <td><input type="button" class="btn btn-danger btn-xs" value="Delete" ng-click="deletePM(forumPost.PostId)" /></td>
+            </tr>
+        </tbody>
+    </table>-->
+
+    <div ng-show="totalItems > 6">
+        <uib-pagination total-items="totalItems"
+                        ng-model="pageVals.currentPage"
+                        items-per-page="pageVals.itemsPerPage"
+                        max-size="pageVals.maxSize"
+                        class="pagination-sm">
+        </uib-pagination>
+    </div>
+</div>
+

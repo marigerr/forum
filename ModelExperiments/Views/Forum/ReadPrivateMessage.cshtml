@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ModelExperiments.Models.ForumPostDTO>
+
+@{
+    ViewBag.Title = "Messages";
+}
+
+<h2>Private Mailbox</h2>
+
+<div>
+    <h4>Messages</h4>
+    <hr />
+@foreach (var item in Model)
+{
+    <dl class="dl-horizontal">
+        <dt>
+            Subject
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.Title)
+        </dd>
+
+        <dt>
+            From:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.UserName)
+        </dd>
+
+        <dt>
+            Text
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.PostContent)
+        </dd>
+
+        <dt>
+            Timestamp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.TimeStamp)
+        </dd>
+
+    </dl>
+    <p>
+        @Html.ActionLink("Mark as Read", "MarkReadPM", new { postId = item.PostId }) |
+        @Html.ActionLink("Reply", "ReadPrivateMessage") |
+        @Html.ActionLink("Delete", "DeletePM", new { postId = item.PostId })
+    </p>
+        <hr />
+        }
+</div>
+    

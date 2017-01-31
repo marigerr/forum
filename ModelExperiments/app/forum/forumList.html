@@ -1,0 +1,58 @@
+﻿<div class="container">
+    <div ng-hide="hideMain">
+
+        <h2>
+            <span>Forum</span>
+            <button ng-show="LoggedInUserStatus!='Deactivated'" id="newPost" type="button" class="btn btn-primary btn-sm pull-right"
+                    ng-click="createForm = true">
+                Create New Post
+            </button>
+        </h2>
+        <hr />
+
+        <div ng-include="'../app/forum/createForumPost.html'" ng-show="createForm"></div>
+
+        <div ng-cloak>
+            <div class="well well-lg">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><btn>Title</btn></th>
+                            <th><btn>Date</btn></th>
+                            <th><btn>User</btn></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="forumPost in ForumList | pages: pageVals.currentPage : pageVals.itemsPerPage">
+
+                            <td ng-click="readPost(forumPost.PostId)">{{forumPost.Title}}</td>
+                            <td>{{forumPost.TimeStamp | date:'short'}}</td>
+                            <td><a ng-click="showUser(forumPost.UserName)">{{forumPost.UserName}}</a></td>
+
+                            <td><button class="btn btn-primary btn-xs" value="Read/Reply" ng-click="readPost(forumPost.PostId)">Read</button></td>
+
+                            <td><input ng-show="forumPost.UserName == LoggedInUser" type="button" class="btn btn-warning btn-xs" value="Edit" ng-click="editPost(forumPost.PostId)" /></td>
+
+                            <td><input ng-show="forumPost.UserName == LoggedInUser" type="button" class="btn btn-danger btn-xs" value="Delete" ng-click="deletePost(forumPost.PostId)" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div ng-show="totalItems > 6">
+                    <uib-pagination total-items="totalItems"
+                                    ng-model="pageVals.currentPage"
+                                    items-per-page="pageVals.itemsPerPage"
+                                    max-size="pageVals.maxSize"
+                                    class="pagination-sm">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+
+    </div>  <!--end of hideMain-->
+    <!--<div ng-include="'../app/forum/readPostPage.html'" ng-show="showReadPost"></div>-->
+    <!--<div ng-include="'../app/publicProfilePage.html'" ng-show="showProfile"></div>-->
+</div>   <!--end of container-->

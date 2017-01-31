@@ -1,0 +1,59 @@
+﻿<div class="well">
+    <form>
+        <div class="form-group">
+            <label for="newNews.Title" class="control-label">Title</label>
+            <div class="">
+                <input type="text" class="form-control"
+                       ng-model="newNews.Title"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 form-group">
+                <label for="newNews.EventTime" class="control-label">Time</label>
+                <div> <uib-timepicker ng-model="newNews.EventTime" minute-step="15" show-spinners="false"></uib-timepicker></div>
+            </div>
+            <div class="col-md-3 form-group">
+                <!--<label for="newNews.EventDate" class="control-label">Date</label>
+                <div class="">
+                    <uib-datepicker ng-model="newNews.EventDate"></uib-datepicker>
+                </div>-->
+
+                <label for="newNews.EventDate" class="control-label">Date</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup ng-model="newNews.EventDate" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newNews.Organizer" class="control-label">Organizer Name</label>
+            <div class="">
+                <input type="text" class="form-control"
+                       ng-model="newNews.Organizer" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="newNews.OrganizerContactEmail" class="control-label">Contact Email</label>
+            <div class="">
+                <input type="text" class="form-control"
+                       ng-model="newNews.OrganizerContactEmail" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newNews.ItemContent" class="control-label">Description</label>
+            <div class="">
+                <textarea type="text" rows="6" class="form-control"
+                          ng-model="newNews.ItemContent"></textarea>
+            </div>
+        </div>
+
+        <div class="">
+            <button class="btn btn-primary btn-sm" ng-click="createOrUpdateNewsItem(newNews)">Submit</button>
+            <button class="btn btn-warning btn-sm" ng-click="showHideEventForm()">Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+﻿<div class="well">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="newPost.Title" class="control-label col-md-2">Title</label>
+            <div class="col-md-10">
+                <input type="text" id="newPost.Title" class="form-control"
+                       ng-model="newPost.Title" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newPost.PostContent" class="control-label col-md-2">Content</label>
+            <div class="col-md-10">
+                <textarea type="text" rows="6" id="newPost.PostContent" class="form-control"
+                          ng-model="newPost.PostContent"></textarea>
+            </div>
+        </div>
+        <div class="col-md-offset-2">
+            <button class="btn btn-primary btn-sm" ng-click="createOrUpdatePost(newPost)">Submit</button>
+            <button class="btn btn-warning btn-sm" ng-click="closeCreateForm()">Cancel</button>
+        </div>
+    </form>
+</div>

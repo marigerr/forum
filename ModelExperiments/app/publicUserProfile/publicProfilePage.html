@@ -1,0 +1,71 @@
+﻿<h4>User Profile<button class="btn btn-success btn-sm pull-right" 
+                        ng-click="backToForum()">Back to Forum List</button></h4>
+<hr />
+<h2>{{error}}</h2>
+
+<h2><span>{{ProfileUserName}}</span>
+    <button class="btn btn-primary btn-sm pull-right" 
+            ng-click="formShow()">Send Private Message</button></h2>
+<h5>Date Joined: <span>{{DateJoined | date:'short'}}</span></h5>
+<h5>{{PmSent}}</h5>
+
+<div ng-show="formShowHide.privateMess" ng-include="'../app/publicUserProfile/privateMessageForm.html'">
+    <hr />
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="newPM.Title" class="control-label col-md-2">Title</label>
+            <div class="col-md-10">
+                <input type="text" id="newPM.Title" class="form-control"
+                       ng-model="newPM.Title" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newPM.PostContent" class="control-label col-md-2">Content</label>
+            <div class="col-md-10">
+                <textarea type="text" rows="6" id="newPM.PostContent" class="form-control"
+                          ng-model="newPM.PostContent"></textarea>
+            </div>
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-primary btn-sm" ng-click="createOrUpdatePM(newPM)">Submit</button>
+            <button class="btn btn-warning btn-sm" ng-click="formShowHide.privateMess = false">Cancel</button>
+        </div>
+    </form>
+    <hr />
+</div>
+<hr />
+<h2>Recent Forum Posts</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><btn>Title</btn></th>
+            <th><btn>Date</btn></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="forumPost in ForumList | pages: pageVals.currentPage : pageVals.itemsPerPage">
+
+            <td><a ng-show="forumPost.ParentPostId != NULL" ng-click="readPost(forumPost.ParentPostId)">{{forumPost.Title}}</a><span ng-show="forumPost.ParentPostId == null" ng-click="readPost(forumPost.PostId)">{{forumPost.Title}}</span></td>
+            <td>{{forumPost.TimeStamp | date:'short'}}</td>
+
+            <td><button class="btn btn-primary btn-xs" value="Read/Reply" ng-click="readPost(forumPost.PostId)">Read/Reply</button></td>
+            <!--<td><input ng-show="forumPost.UserName == LoggedInUser" type="button" class="btn btn-warning btn-xs" value="Edit" ng-click="editPost(forumPost.PostId)" /></td>
+            <td><input ng-show="forumPost.UserName == LoggedInUser" type="button" class="btn btn-danger btn-xs" value="Delete" ng-click="deletePost(forumPost.PostId)" /></td>-->
+        </tr>
+    </tbody>
+</table>
+
+<div ng-show="totalItems > 6">
+    <uib-pagination total-items="totalItems"
+                    ng-model="pageVals.currentPage"
+                    items-per-page="pageVals.itemsPerPage"
+                    max-size="pageVals.maxSize"
+                    class="pagination-sm">
+    </uib-pagination>
+</div>
+
+

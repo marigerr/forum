@@ -1,0 +1,57 @@
+﻿
+
+
+<h3><span>{{forumPost.Title}}</span>
+    <button ng-show="LoggedInUserStatus!='Deactivated'" class="btn btn-primary btn-sm pull-right" ng-click="formShowHide.replyForm = true">Reply to Post</button>
+    <!--<button ng-show="LoggedInUserStatus!='Deactivated'" class="btn btn-info btn-sm pull-right" ng-click="quotePost()">Reply with Quoted Selected Text</button>-->
+</h3>
+<h5>Posted by: <span>{{forumPost.User.UserName}}</span>
+    <button class="btn btn-success btn-sm pull-right" ng-click="backToForum()">Back to Forum List</button></h5>
+<hr />
+<p class="myText">{{forumPost.PostContent}}</></p>
+<hr />
+
+<div ng-show="formShowHide.replyForm">
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="newReply.PostContent" class="control-label col-md-2">Your Message</label>
+            <div class="col-md-10">
+                <textarea type="text" rows="4" id="newReply.PostContent" class="form-control"
+                          ng-model="newReply.PostContent"></textarea>
+            </div>
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-primary btn-sm" ng-click="replyPost(newReply)">Submit</button>
+            <button class="btn btn-warning btn-sm" ng-click="closeCreateForm()">Cancel</button>
+        </div>
+    </form>
+
+</div>
+
+<div ng-show="ForumPostReplies.length != 0">
+    <h3>Replies</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><btn>Date</btn></th>
+                <th><btn>Content</btn></th>
+                <th><btn>User</btn></th>
+                <!--<th></th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="reply in ForumPostReplies">
+                <td class="col-md-1">{{reply.TimeStamp | date:'short'}}</td>
+                <td class="col-md-8 myText">{{reply.PostContent}}</td>
+                <td><a ng-click="showUser(reply.UserName)">{{reply.UserName}}</a></td>
+                <!--<td class="col-md-2">
+                    <div class="btn-group">
+                        <button ng-show="reply.UserName == LoggedInUser" class="btn btn-warning btn-xs" ng-click="editReply(reply.PostId)">Edit</button>
+                        <button ng-show="reply.UserName == LoggedInUser" class="btn btn-danger btn-xs" ng-click="deleteReply(reply.PostId)">Delete</button>
+                    </div>
+                </td>-->
+            </tr>
+        </tbody>
+    </table>
+</div>

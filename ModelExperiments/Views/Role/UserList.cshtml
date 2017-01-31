@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ModelExperiments.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "UserList";
+}
+
+<h2>UserList</h2>
+<p>@ViewBag.msg</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.DateJoined)
+        </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+             @*<td>
+                @Html.DisplayFor(modelItem => item.DateJoined)
+            </td>*@
+            <td>
+                @Html.ActionLink("User", "AddRoleToUser", new { Id = item.Id, RoleToSet = "User" }) |
+                @Html.ActionLink("Moderator", "AddRoleToUser", new { Id = item.Id, RoleToSet = "Moderator" }) |
+                @Html.ActionLink("Admin", "AddRoleToUser", new { Id = item.Id, RoleToSet = "Admin" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,30 @@
+﻿<div class="modal-header">
+    <h3>Write a Private Message</h3>
+</div>
+
+<form class="form-horizontal">
+    <div class="modal-body">
+        <!--<div class="form-group">
+            <label for="newPM.Title" class="control-label col-md-2">Title</label>
+            <div class="col-md-10">
+                <input type="text" id="newPM.Title" class="form-control"
+                       ng-model="newPM.Title" />
+            </div>
+        </div>-->
+        <div class="form-group">
+            <label for="newPM.PostContent" class="control-label col-md-2">Message</label>
+            <div class="col-md-10">
+                <textarea type="text" rows="6" id="newPM.PostContent" class="form-control"
+                          ng-model="newPM.PostContent"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-primary btn-sm" ng-click="sendPM(newPM)">Submit</button>
+                <!--<input type="button" class="btn btn-success btn-xs" value="Reply" ng-click="replyToPM(forumPost.PostId)" />-->
+                <button class="btn btn-warning btn-sm" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</form>

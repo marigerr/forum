@@ -1,0 +1,47 @@
+﻿<div ng-show="NewsItem.IsEvent">
+    <h2>
+        <span>Event</span>
+        <button id="newPost" type="button" class="btn btn-success    btn-sm pull-right"
+                ng-click="backToNewsFeed()">
+            Back To NewsFeed
+        </button>
+    </h2>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{NewsItem.Title}}</div>
+        <div class="panel-body">
+            {{NewsItem.ItemContent}}
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+            <li class="list-group-item">Event Date: {{NewsItem.EventDateTime | date:'short'}}</li>
+            <li class="list-group-item">Organizer: {{NewsItem.Organizer}}</li>
+            <li class="list-group-item">Organizer Contact: {{NewsItem.OrganizerContactEmail}}</li>
+        </ul>
+    </div>
+</div>
+
+<div ng-hide="NewsItem.IsEvent">
+    <h2>
+        <span>News Post</span>
+        <button id="newPost" type="button" class="btn btn-success btn-sm pull-right"
+                ng-click="backToNewsFeed()">
+            Back To NewsFeed
+        </button>
+    </h2>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{NewsItem.Title}}</div>
+        <div class="panel-body">
+            {{NewsItem.ItemContent}}
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+            <li class="list-group-item">Date Posted: {{NewsItem.TimeStamp | date:'short'}}</li>
+        </ul>
+    </div>
+</div>

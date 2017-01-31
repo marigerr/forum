@@ -1,0 +1,76 @@
+﻿<div class="pull-right">
+    <button type="button" class="btn btn-success btn-sm" ng-click="showList('User')">User List</button>
+    <button type="button" class="btn btn-success btn-sm" ng-click="showDeactivated()">Deactivated User List</button>
+    <button type="button" class="btn btn-success btn-sm" ng-click="showList('Moderator')">Moderator List</button>
+    <button type="button" class="btn btn-success btn-sm" ng-click="showList('Admin')">Admin List</button>
+</div>
+
+
+<div>
+    <h2>{{listName}} List</h2>
+
+    <div class="well">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-2"><btn>User Name</btn></th>
+                    <th class="col-md-2"><btn>Email</btn></th>
+                    <th class="col-md-2">Mod/Admin Roles</th>
+                    <th class="col-md-4"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in currentList | pages: pageVals.currentPage : pageVals.itemsPerPage">
+
+                    <td>{{user.UserName}}</td>
+                    <td>{{user.Email}}</td>
+                    <td><span ng-repeat="role in user.RoleList">{{role}}<br /></span></td>
+
+
+                    <td>
+                        <div class="btn-toolbar">
+
+                            <input ng-show="user.Status != 'Deactivated'" type="button" class="btn-group btn btn-danger btn-xs" value="Deactivate User" ng-click="deactivateUser(user.UserName)" />
+                            <input ng-show="user.Status == 'Deactivated'" type="button" class="btn-group btn btn-danger btn-xs" value="Activate User" ng-click="activateUser(user.UserName)" />
+
+                            <div class="btn-group" uib-dropdown>
+                                <button id="split-button" type="button" class="btn btn-primary btn-xs">Add Role</button>
+                                <button type="button" class="btn btn-primary btn-xs" uib-dropdown-toggle>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Split button!</span>
+                                </button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                                    <li ng-repeat="role in user.availRoles" role="menuitem"><a ng-click="addRole(user.UserName, role)">{{role}}</a></li>
+                                </ul>
+                            </div>
+
+
+                            <div ng-show="user.RoleList.length >= 1" class="btn-group" uib-dropdown>
+                                <button id="split-button" type="button" class="btn btn-warning btn-xs">Remove Role</button>
+                                <button type="button" class="btn btn-warning btn-xs" uib-dropdown-toggle>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Split button!</span>
+                                </button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                                    <li ng-repeat="role in user.RoleList" role="menuitem"><a ng-click="removeRole(user.UserName, role)">{{role}}</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </td>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-show="totalItems > 6">
+        <uib-pagination total-items="totalItems"
+                        ng-model="pageVals.currentPage"
+                        items-per-page="pageVals.itemsPerPage"
+                        max-size="pageVals.maxSize"
+                        class="pagination-sm">
+        </uib-pagination>
+    </div>
+</div>
+
+

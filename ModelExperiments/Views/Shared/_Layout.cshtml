@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Community Portal</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    <base href="/">
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Community Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Forum","Forum", "Forum")</li>
+                    <li>@Html.ActionLink("News Feed", "NewsFeed", "NewsFeed")</li>
+                    <li>
+                        <a href="@Url.Action("Mail", "Mail")">
+                        <span class="glyphicon glyphicon-envelope @((bool)Session["HasMail"] == true ? "hasMailIcon" : "normalMailIcon")"></span> Mail</a>
+                    </li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
+                    }
+
+
+</ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <div ng-app="commPortalApp"><div ng-view></div></div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Community Portal</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

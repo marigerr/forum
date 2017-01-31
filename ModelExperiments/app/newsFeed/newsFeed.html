@@ -1,0 +1,61 @@
+﻿<div class="container">
+    <div>
+
+        <h2>
+            <span>News and Events</span>
+            <span class="btn-group-vertical pull-right">
+                <input ng-show="IsAdminOrMod" value="Create News Item" type="button" class="btn btn-primary btn-sm "
+                        ng-click="showHideNewsForm()">
+                <input ng-show="IsAdminOrMod" value="Create Event" type="button" class="btn btn-success btn-sm"
+                        ng-click="showHideEventForm()">
+            </span>
+        </h2>
+        <hr />
+
+        <div ng-include="'../app/newsFeed/createNewsItem.html'" ng-show="createNewsForm"></div>
+        <div ng-include="'../app/newsFeed/createEvent.html'" ng-show="createEventForm"></div>
+
+        <div class="well well-lg">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><btn>Subject</btn></th>
+                        <th><btn>Date Posted</btn></th>
+                        <th>Type</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="newsItem in NewsItemList | pages: pageVals.currentPage : pageVals.itemsPerPage">
+
+                        <td>{{newsItem.Title}}</td>
+                        <td>{{newsItem.TimeStamp | date:'short'}}</td>
+                        <td><span ng-show="newsItem.IsEvent">Event</span><span ng-hide="newsItem.IsEvent">News</span></td>
+
+
+
+                        <td>
+                            <div class="btn-group">
+                                <input type="button" class="btn btn-primary btn-xs" value="Read" ng-click="readNews(newsItem.ItemId)">
+                                <input type="button" class="btn btn-warning btn-xs" value="Edit" ng-show="IsAdminOrMod" ng-click="editItem(newsItem)" />
+                                <input type="button" class="btn btn-danger btn-xs" value="Delete" ng-show="IsAdminOrMod" ng-click="deleteItem(newsItem.ItemId)" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div ng-show="totalItems > 6">
+                <uib-pagination total-items="totalItems"
+                                ng-model="pageVals.currentPage"
+                                items-per-page="pageVals.itemsPerPage"
+                                max-size="pageVals.maxSize"
+                                class="pagination-sm">
+                </uib-pagination>
+            </div>
+        </div>
+
+        </div>
+    </div>  

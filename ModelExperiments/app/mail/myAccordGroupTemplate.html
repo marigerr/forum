@@ -1,0 +1,13 @@
+﻿<div class="panel {{panelClass || 'panel-default'}}">
+    <div class="panel-heading" ng-click="toggleOpen()">
+        <div class="panel-title">
+            <span class="accordion-toggle" uib-accordion-transclude="heading">
+                <span uib-accordion-header ng-class="">{{heading}}</span>
+            </span>
+            
+        </div>
+    </div>
+    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+        <div class="panel-body" ng-transclude></div>
+    </div>
+</div>
