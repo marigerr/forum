@@ -54,8 +54,9 @@
         };
         
         $scope.createOrUpdateNewsItem = function (newNews) {
-            newNews.JSEventDateTime = new Date(newNews.EventDate.getFullYear(), newNews.EventDate.getMonth(), newNews.EventDate.getDate(),
-               newNews.EventTime.getHours(), newNews.EventTime.getMinutes(), newNews.EventTime.getSeconds());
+            if (newNews.IsEvent) {
+                newNews.JSEventDateTime = new Date(newNews.EventDate.getFullYear(), newNews.EventDate.getMonth(), newNews.EventDate.getDate(), newNews.EventTime.getHours(), newNews.EventTime.getMinutes(), newNews.EventTime.getSeconds());   
+            }
 
             $scope.createNewsForm = false;
             $scope.createEventForm = false;
