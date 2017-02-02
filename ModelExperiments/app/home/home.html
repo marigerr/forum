@@ -1,26 +1,122 @@
-﻿<div class="jumbotron">
-    <h1>Community Portal</h1>
-    <p class="lead">Community events, news & forum</p>
-</div>
+﻿<div class="container">
+    <div class="jumbotron">
+        <h1>Code Community</h1>
+        <p class="lead">Coding news, events and discussion</p>
+    </div>
 
-<!--<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div ng-show="dataLoaded" class="row">
+
+        <div class="col-md-4">
+            <div class="panel panel-default homePanels col-md-12">
+                <div class="panel-heading">News and Events</div>
+                <div class="panel-body">
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><btn>Subject</btn></th>
+                                <th><btn>Date Posted</btn></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="newsItem in NewsItemList | pages: NewsPageVals.currentPage : NewsPageVals.itemsPerPage">
+
+                                <td ng-click="readNews(newsItem.ItemId)">{{newsItem.Title}}</td>
+                                <td>{{newsItem.TimeStamp | date:'shortDate'}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-show="totalNewsItems > 6">
+                        <uib-pagination boundary-links="true"
+                                        next-text="&rsaquo;"
+                                        previous-text="&lsaquo;"
+                                        total-items="totalNewsItems"
+                                        ng-model="NewsPageVals.currentPage"
+                                        items-per-page="NewsPageVals.itemsPerPage"
+                                        max-size="NewsPageVals.maxSize"
+                                        class="pagination-sm">
+                        </uib-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default homePanels col-md-12">
+                <div class="panel-heading">Forum - Latest discussion posts</div>
+                <div class="panel-body">
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><btn>Title</btn></th>
+                                <th><btn>Date</btn></th>
+                                <!--<th><btn>User</btn></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="forumPost in ForumList | pages: pageVals.currentPage : pageVals.itemsPerPage">
+                                <td ng-click="readPost(forumPost.PostId)">{{forumPost.Title}}</td>
+                                <td>{{forumPost.TimeStamp | date:'shortDate'}}</td>
+                                <!--<td><a ng-click="showUser(forumPost.UserName)">{{forumPost.UserName}}</a></td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-show="totalItems > 6">
+                        <uib-pagination boundary-links="true"
+                                        next-text="&rsaquo;"
+                                        previous-text="&lsaquo;"
+                                        total-items="totalItems"
+                                        ng-model="pageVals.currentPage"
+                                        items-per-page="pageVals.itemsPerPage"
+                                        max-size="pageVals.maxSize"
+                                        class="pagination-sm">
+                        </uib-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default homePanels col-md-12">
+                <div class="panel-heading">Mail -  You have <span ng-class="unreadMail ? 'unreadMail' : ''">{{TotalUnread}} unread mail</span></div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><btn>Title</btn></th>
+                                <th><btn>From</btn></th>
+                                <!--<th><btn>User</btn></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="mailPost in MailList | pages: MailPageVals.currentPage : MailPageVals.itemsPerPage">
+                                <td ng-click="readMail()">{{mailPost.Title}}</td>
+
+                                <td><a ng-click="showUser(mailPost.UserName)">{{mailPost.UserName}}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-show="totalMailItems > 6">
+                        <uib-pagination boundary-links="true"
+                                        next-text="&rsaquo;"
+                                        previous-text="&lsaquo;"
+                                        total-items="totalMailItems"
+                                        ng-model="MailPageVals.currentPage"
+                                        items-per-page="MailPageVals.itemsPerPage"
+                                        max-size="MailPageVals.maxSize"
+                                        class="pagination-sm">
+                        </uib-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>-->
+</div>

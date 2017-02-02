@@ -14,7 +14,7 @@ namespace ModelExperiments.Controllers
     {
         ApplicationDbContext dB = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Home()
         {
             var LoggedInUser = User.Identity.GetUserName();
             //ViewBag.IsMail =
@@ -40,18 +40,18 @@ namespace ModelExperiments.Controllers
 
      
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //public ActionResult Contact()
+        //{
+        //    ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+        //    return View();
+        //}
     }
 }

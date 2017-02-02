@@ -48,7 +48,10 @@
             </table>
 
             <div ng-show="totalItems > 6">
-                <uib-pagination total-items="totalItems"
+                <uib-pagination boundary-links="true"
+                                next-text="&rsaquo;"
+                                previous-text="&lsaquo;"
+                                total-items="totalItems"
                                 ng-model="pageVals.currentPage"
                                 items-per-page="pageVals.itemsPerPage"
                                 max-size="pageVals.maxSize"

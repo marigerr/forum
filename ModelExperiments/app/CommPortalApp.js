@@ -3,10 +3,14 @@
 commPortalApp.config(["$routeProvider", "$locationProvider",
     function($routeProvider, $locationProvider) {
     $routeProvider
-        .when("/Home/Index", {
+        .when("/", {
             templateUrl: "app/home/home.html",
             controller: "HomeController"
         })
+        //.when("/Home/Home", {
+        //  templateUrl: "app/home/home.html",
+        //  controller: "HomeController"
+        //})
         .when("/Forum/Forum", {
             templateUrl: "app/forum/forumList.html",
             controller: "ForumController"
@@ -39,7 +43,7 @@ commPortalApp.config(["$routeProvider", "$locationProvider",
         //    redirectTo: "",
         //    controller: "HomeController"
         //});
-    $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
 }]);
 
 
@@ -79,8 +83,20 @@ commPortalApp.factory('Pagin', function () {
         vals : function() {
             return {
                 currentPage : 1,
-                itemsPerPage : 100,
-                maxSize : 6
+                itemsPerPage : 25,
+                maxSize : 5
+            };
+        }
+    }
+});
+
+commPortalApp.factory('HomePagin', function () {
+    return {
+        vals : function() {
+            return {
+                currentPage : 1,
+                itemsPerPage : 5,
+                maxSize : 3
             };
         }
     }

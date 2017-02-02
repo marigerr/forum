@@ -10,6 +10,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family:Georgia, 'Times New Roman', Times, serif
 }
 
+/*[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}*/
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -81,11 +85,50 @@ body {
     border-radius:4px !important;
 }
 
-.panel-heading:hover {
+.unreadMail {
+    color: #FF1923  !important;
+}
+
+.homePanels {
+    padding-right:0px;
+    padding-left:0px;
+    min-height: 375px; 
+    max-height: 375px;
+    <!--margin-right:2px;-->
+}
+
+.homePanels > .panel-heading {
+    font-weight: bold;
+    color:#333333;
+    background-color:#DAFFE9
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: rgb(89, 86, 135);
+  border-color: rgb(89, 86, 135);
+}
+
+a {
+    color: rgb(89, 86, 135);
+    text-decoration: none;
+}
+
+uib-accordion .panel-heading:hover {
     /*background-color:#f09878;*/
     background-color:#f2efed;
     
 }
+
+<!--.panel-heading.home-panels:hover {
+    /*background-color:#f09878;*/
+    background-color:#f2efed;
+
+}-->
 
 @media (max-width: 767px) {                  
    .content-to-hide {
@@ -124,9 +167,9 @@ textarea {
 
 
 
+/*  Commmented out below here */
 
-
-/*body {
+<!--body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -213,4 +256,4 @@ input,
 select,
 textarea {
     max-width: 280px;
-}*/
+}-->
