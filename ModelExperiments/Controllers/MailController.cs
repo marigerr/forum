@@ -18,6 +18,24 @@ namespace ModelExperiments.Controllers
         }
 
         [Authorize]
+        public JsonResult CheckMail()
+        {
+          var LoggedInUser = User.Identity.GetUserName();
+          var query =
+
+                 dB.ForumPosts.Any(f => f.IsPrivate == true && f.IsRead == false && f.PmToUserName == LoggedInUser);
+
+          if (query)
+          {
+            return Json(true, JsonRequestBehavior.AllowGet);
+          }
+          else
+          {
+            return Json(false, JsonRequestBehavior.AllowGet);
+          }
+        }
+
+        [Authorize]
         public JsonResult ReadPrivateMessage()
         {
             ForumListViewModel result = new ForumListViewModel();

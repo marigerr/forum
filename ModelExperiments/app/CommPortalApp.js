@@ -47,6 +47,49 @@ commPortalApp.config(["$routeProvider", "$locationProvider",
 }]);
 
 
+commPortalApp.controller("MainController",
+    ["$http", "$scope", "$location", '$interval',
+    function ($http, $scope, $location, $interval) {
+         $interval(function () {
+            var onError = function (reason) {
+                $scope.error = "There was an error";
+            };
+            var onListComplete = function(response) {
+                $scope.hasNewMail = response.data;
+                <!--$rootScope.$broadcast('emailStatus', hasNewMail);-->
+            }
+            $http.get('/Mail/CheckMail/')
+                 .then(onListComplete, onError);
+        }, 5000);
+
+}]);
+
+/* <!--commPortalApp.run(['CheckMail', function(CheckMail) {
+        alert(CheckMail());
+    }]); --> */
+
+
+/* <!-- commPortalApp.factory('CheckMail', ['$rootScope','$interval', '$http', function ($rootScope, $interval, $http){
+    
+    var hasNewMail;
+    function start(){
+        $interval(function () {
+            var onError = function (reason) {
+                $rootScope.error = "There was an error";
+            };
+            var onListComplete = function(response) {
+                hasNewMail = response.data;
+                $rootScope.$broadcast('emailStatus', hasNewMail);
+            }
+            $http.get('/Mail/CheckMail/')
+                 .then(onListComplete, onError);
+        }, 2000);
+      }
+    
+
+    return hasNewMail;
+}]);   --> */
+
 commPortalApp.factory('JsonTime', [ function () {
     var convertFrom = function (objWithTimes) {
         myLength = objWithTimes.length;
