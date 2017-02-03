@@ -10,7 +10,7 @@
     <base href="/">
 
 </head>
-<body>
+<body ng-app="commPortalApp">
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,16 +23,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Home", "Home")</li>
-                    <li>@Html.ActionLink("Forum","Forum", "Forum")</li>
-                    <li>@Html.ActionLink("News & Events", "NewsFeed", "NewsFeed")</li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Forum/Forum">Forum</a></li>
+                    <li><a href="/NewsFeed/NewsFeed">News & Events</a></li>
                     <li>
-                        <a href="@Url.Action("Mail", "Mail")">
+                        <a href="/Mail/Mail">
                         <span class="glyphicon glyphicon-envelope @((bool)Session["HasMail"] == true ? "hasMailIcon" : "normalMailIcon")"></span> Mail</a>
                     </li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
                     {
-                        <li>@Html.ActionLink("Admin", "Admin", "Admin")</li>
+                        <li><a href="/Admin/Admin">Admin</a></li>
                     }
 
 
@@ -43,7 +43,7 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <div ng-app="commPortalApp"><div ng-view></div></div>
+        <div><div ng-view></div></div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Code Community</p>
